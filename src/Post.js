@@ -20,6 +20,8 @@ import React, { Component } from "react";
     }
 ]
 
+
+
 function PostingComments(props) {
     const comments = props;
     const comment = comments.map((element) => {
@@ -40,11 +42,44 @@ function PostList() {
     return <div class="entry">{posting}</div>
 }
 
+class PostBody extends Component {
+    constructor() {
+        super();
+        this.state = {
+            body:`Check out this body property`
+        }
+    }
+
+    changeBody(value) {
+        this.setState({body: value});
+    }
+
+    render() {
+        return (
+            <div>
+                <div>{this.state.body}</div>
+                <button onClick=
+                {
+                    (e) => {
+                        let response = prompt("What should the new body be?");
+                        this.changeBody(response);
+                    }
+                }>
+                    Edit Body
+                </button>
+            </div>
+        )
+    }
+}
+
     class Post extends Component {
         render() {
             
                 return (
-                    <PostList />
+                    <div>
+                        <PostList />
+                        <PostBody />
+                    </div>
                 );
         }
     }
